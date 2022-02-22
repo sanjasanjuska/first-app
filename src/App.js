@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { ChatContextProvider } from './contexts/ChatContext';
+import AppRouter from "./pages/AppRouter";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChatContextProvider>
+      <AppRouter />
+    </ChatContextProvider>
   );
 }
 
-export default App;
+function withSmile(Component) {
+  return function () {
+    return (
+      <div>
+        <Component />
+        <div>:)</div>
+      </div>
+    );
+  }
+}
+
+export default withSmile(App);

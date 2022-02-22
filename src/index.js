@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppContext from "./contexts/AppContext";
+import { getId } from "./helpers";
+import { BrowserRouter } from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <AppContext.Provider value={{ language: "hr", id: getId() }}>
+        <App />
+      </AppContext.Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
